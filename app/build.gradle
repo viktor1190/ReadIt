@@ -75,10 +75,13 @@ android {
 dependencies {
 
     // App dependencies
+    implementation project(path: ':data')
+
     // implementation 'androidx.core:core-ktx:1.7.0' // TODO review this dependency
     implementation "androidx.appcompat:appcompat:$appCompatVersion"
     implementation "com.google.android.material:material:$materialVersion"
     implementation "androidx.constraintlayout:constraintlayout:$constraintLayoutVersion"
+    implementation "com.jakewharton.timber:timber:$timberVersion"
 
     // Architecture Components
     implementation "androidx.navigation:navigation-fragment-ktx:$navigationVersion"

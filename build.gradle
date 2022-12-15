@@ -30,7 +30,7 @@ ext {
     fragmentKtxVersion = '1.5.5'
     junitVersion = '4.13.2'
     materialVersion = '1.7.0'
-    timberVersion = '4.7.1'
+    timberVersion = '5.0.1'
 
     //// Retrofit
     // javadoc: https://square.github.io/retrofit/2.x/retrofit/

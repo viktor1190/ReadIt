@@ -1,4 +1,5 @@
 package com.victorvalencia.data.model.domain
+// TODO update the package name to containt victorvalencia.readdit.data...
 
 data class RedditPost(
     val title: String,
