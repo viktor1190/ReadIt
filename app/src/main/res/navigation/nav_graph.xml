@@ -7,7 +7,7 @@
 
     <fragment
         android:id="@+id/FirstFragment"
-        android:name="com.victorvalencia.readdit.topPosts.FirstFragment"
+        android:name="com.victorvalencia.readdit.topPosts.TopRedditPostsFragment"
         android:label="@string/first_fragment_label"
         tools:layout="@layout/fragment_top_reddit_posts">
 

@@ -7,13 +7,14 @@ import com.victorvalencia.data.model.domain.RedditPost
 import com.victorvalencia.data.model.map
 import com.victorvalencia.data.model.wrapExceptions
 import retrofit2.Response
+import javax.inject.Inject
 
 internal interface RedditApi {
 
     suspend fun getTopList(): ApiResult<List<RedditPost>>
 }
 
-internal class RedditApiImpl(
+internal class RedditApiImpl @Inject constructor(
     private val redditService: RedditService,
     private val responseToApiResultMapper: ResponseToApiResultMapper,
     private val networkHandler: NetworkHandler
