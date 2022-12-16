@@ -31,5 +31,5 @@ internal data class RedditTopItemResponse(
     @Json(name = "thumbnail") val thumbnailUrl: String,
     @Json(name = "permalink") val permalink: String,
     @Json(name = "url") val url: String,
-    @Json(name = "isVideo") val isVideo: Boolean
+    @Json(name = "isVideo") val isVideo: Boolean?
 ): Parcelable

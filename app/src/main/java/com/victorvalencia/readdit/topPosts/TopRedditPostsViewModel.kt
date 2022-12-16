@@ -7,7 +7,10 @@ import com.victorvalencia.data.model.domain.RedditPost
 import com.victorvalencia.readdit.base.BaseViewModel
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.flow.MutableStateFlow
+import kotlinx.coroutines.flow.SharingStarted
 import kotlinx.coroutines.flow.StateFlow
+import kotlinx.coroutines.flow.map
+import kotlinx.coroutines.flow.stateIn
 import kotlinx.coroutines.launch
 import timber.log.Timber
 import javax.inject.Inject
@@ -19,13 +22,14 @@ class TopRedditPostsViewModel @Inject constructor(
 ) : BaseViewModel() {
 
     val topRedditPosts: StateFlow<List<RedditPost>> = MutableStateFlow(emptyList())
-    val testingText: StateFlow<String> = MutableStateFlow("Empty data")
+    val testingText: StateFlow<String> = topRedditPosts.map { "Top posts received = ${it.size}" }
+        .stateIn(viewModelScope, SharingStarted.Lazily, "Loading...")
 
     fun getRedditPosts() {
         viewModelScope.launch/* TODO (dispatcherProvider.IO)*/ {
             when (val result = wrapWithLoadingAndErrorEvents { redditRepository.getTopPosts() }) {
                 is ApiResult.Success -> topRedditPosts.set(result.data)
-                is ApiResult.Failure -> { TODO() }
+                is ApiResult.Failure -> { Timber.e("Error was received while trying to fetch the Reddit Tops: $result") }
             }
         }
     }

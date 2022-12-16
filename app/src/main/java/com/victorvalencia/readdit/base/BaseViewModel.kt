@@ -30,12 +30,14 @@ abstract class BaseViewModel: ViewModel() {
         TODO()
     }
 
-    suspend fun showErrorDialogEvent() {
-        TODO()
+    suspend fun showErrorDialogEvent(result: ApiResult.Failure) {
+        Timber.e("Api error: $result")
+        // TODO()
     }
 
     suspend fun showLoadingEvent(showLoading: Boolean) {
-        TODO()
+        Timber.v("Loading network call..")
+        // TODO()
     }
 
     protected suspend fun <T> wrapWithLoadingAndErrorEvents(
@@ -56,7 +58,7 @@ abstract class BaseViewModel: ViewModel() {
                 showUnauthorizedFailureEvent()
             }
             result is ApiResult.Failure && showErrorDialog -> {
-                showErrorDialogEvent()
+                showErrorDialogEvent(result)
             }
         }
         if (showLoading) showLoadingEvent(false)

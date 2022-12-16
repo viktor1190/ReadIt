@@ -13,7 +13,7 @@ internal fun RedditTopPostsResponse.mapToRedditPosts(): ApiResult<List<RedditPos
             it.data.thumbnailUrl,
             it.data.permalink,
             it.data.url,
-            it.data.isVideo
+            it.data.isVideo ?: false
         )
     }.asSuccess()
 }

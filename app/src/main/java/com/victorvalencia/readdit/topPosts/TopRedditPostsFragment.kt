@@ -1,5 +1,6 @@
 package com.victorvalencia.readdit.topPosts
 
+import android.os.Bundle
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import com.victorvalencia.readdit.R
@@ -16,4 +17,9 @@ class TopRedditPostsFragment : BaseFragment<TopRedditPostsViewModel, FragmentTop
     override val fragmentViewModel: TopRedditPostsViewModel by viewModels()
 
     override fun getLayoutResource() = R.layout.fragment_top_reddit_posts
+
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        fragmentViewModel.getRedditPosts()
+    }
 }
