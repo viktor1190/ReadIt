@@ -9,4 +9,14 @@
 
     <string name="hello_first_fragment">Hello first fragment</string>
     <string name="hello_second_fragment">Hello second fragment. Arg: %1$s</string>
+
+
+    <string name="all_error_dialog_generic_title">Something when wrong</string>
+    <string name="all_error_dialog_generic_message">We got an error, please try again or try a different thing.</string>
+    <string name="all_error_dialog_no_connection_title">Not connected</string>
+    <string name="all_error_dialog_no_connection_message">You\'re not connected to internet. Please reconnect and try again</string>
+    <string name="all_error_dialog_no_found_title">Not found</string>
+    <string name="all_error_dialog_no_found_message">The service couldn\'t find the desired resource for the current screen</string>
+    <string name="all_error_dialog_unauthorized_title">Unauthorized</string>
+    <string name="all_error_dialog_unauthorized_message">Service requires user authentication</string>
 </resources>
