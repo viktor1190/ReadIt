@@ -8,6 +8,8 @@ import javax.inject.Inject
 interface RedditPostsRepository {
 
     suspend fun getNextTopPosts(anchorId: String? = null, count: Int?, limit: Int?): ApiResult<TopPostPaging>
+
+    suspend fun getPrevTopPosts(anchorId: String? = null, count: Int?, limit: Int?): ApiResult<TopPostPaging>
 }
 
 internal class RedditPostsRepositoryImpl @Inject constructor(
@@ -16,5 +18,9 @@ internal class RedditPostsRepositoryImpl @Inject constructor(
 
     override suspend fun getNextTopPosts(anchorId: String?, count: Int?, limit: Int?): ApiResult<TopPostPaging> {
         return redditApi.getNextTopList(anchorId, count, limit)
+    }
+
+    override suspend fun getPrevTopPosts(anchorId: String?, count: Int?, limit: Int?): ApiResult<TopPostPaging> {
+        return redditApi.getPrevTopList(anchorId, count, limit)
     }
 }

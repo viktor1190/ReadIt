@@ -10,10 +10,10 @@ interface TopPostsPagingSourceRepository {
 }
 
 internal class TopPostsPagingSourceRepositoryImpl @Inject constructor(
-    private val redditPostsPagingSource: PagingSource<String, RedditPost>
+    private val redditPostsRepository: RedditPostsRepository
 ) : TopPostsPagingSourceRepository {
 
     override fun getTopPostsPagingSource(): PagingSource<String, RedditPost> {
-        return redditPostsPagingSource
+        return RedditPostPagingSource(redditPostsRepository)
     }
 }

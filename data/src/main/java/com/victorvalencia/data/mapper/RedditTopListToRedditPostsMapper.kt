@@ -17,6 +17,7 @@ internal fun RedditTopPostsResponse.mapToTopPostPaging(): ApiResult<TopPostPagin
                     id = it.data.id,
                     title = it.data.title,
                     subreddit = it.data.subreddit,
+                    author = it.data.author,
                     thumbnailUrl = it.data.thumbnailUrl,
                     permalink = it.data.permalink,
                     url = it.data.url,

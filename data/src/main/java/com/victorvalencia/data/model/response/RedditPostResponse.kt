@@ -33,6 +33,7 @@ internal data class RedditTopItemResponse(
     @Json(name = "name") val name: String,
     @Json(name = "title") val title: String,
     @Json(name = "subreddit") val subreddit: String,
+    @Json(name = "author") val author: String,
     @Json(name = "thumbnail") val thumbnailUrl: String,
     @Json(name = "permalink") val permalink: String,
     @Json(name = "url") val url: String,

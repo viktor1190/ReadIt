@@ -48,6 +48,7 @@ class TopRedditPostsFragment : BaseFragment<TopRedditPostsViewModel, FragmentTop
             repeatOnLifecycle(Lifecycle.State.STARTED) {
                 fragmentViewModel.topRedditPosts.collect {
                     redditPostsAdapter.submitData(it)
+                    binding.swipeRefreshTopRedditPosts.isRefreshing = false
                 }
             }
         }

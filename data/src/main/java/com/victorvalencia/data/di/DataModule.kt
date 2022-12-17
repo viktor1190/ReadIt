@@ -83,6 +83,4 @@ abstract class DataModule {
     @Binds
     abstract fun bindNetworkHandler(networkHandlerImpl: NetworkHandlerImpl): NetworkHandler
 
-    @Binds
-    abstract fun bindPagingSource(redditPostPagingSource: RedditPostPagingSource): PagingSource<String, RedditPost>
 }

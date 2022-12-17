@@ -14,15 +14,37 @@
         android:layout_height="wrap_content">
 
         <TextView
-            android:textSize="24sp"
+            android:id="@+id/tv_item_top_reddit_post_author"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@{redditPost.author}"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:text="@tools:sample/full_names"/>
+
+        <TextView
+            android:id="@+id/tv_item_top_reddit_post_title"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="@{redditPost.title}"
+            android:textSize="24sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/tv_item_top_reddit_post_author"
+            tools:text="@tools:sample/lorem/random" />
+
+        <ImageView
+            android:id="@+id/imageView_item_top_reddit_post_thumbnail"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:scaleType="centerInside"
+            imageUrl="@{redditPost.thumbnailUrl}"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            tools:text="@tools:sample/full_names" />
+            app:layout_constraintTop_toBottomOf="@+id/tv_item_top_reddit_post_title"
+            tools:srcCompat="@tools:sample/backgrounds/scenic" />
+
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

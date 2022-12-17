@@ -12,6 +12,8 @@ import javax.inject.Inject
 internal interface RedditApi {
 
     suspend fun getNextTopList(anchorId: String?, count: Int?, limit: Int?): ApiResult<TopPostPaging>
+
+    suspend fun getPrevTopList(anchorId: String?, count: Int?, limit: Int?): ApiResult<TopPostPaging>
 }
 
 internal class RedditApiImpl @Inject constructor(
@@ -23,6 +25,15 @@ internal class RedditApiImpl @Inject constructor(
     override suspend fun getNextTopList(anchorId: String?, count: Int?, limit: Int?): ApiResult<TopPostPaging> {
         return wrapExceptions("getTopList") {
             redditService.getTopListAfter(anchorId, count, limit).toResult()
+        }.map { dto ->
+            dto.mapToTopPostPaging()
+        }
+
+    }
+
+    override suspend fun getPrevTopList(anchorId: String?, count: Int?, limit: Int?): ApiResult<TopPostPaging> {
+        return wrapExceptions("getTopList") {
+            redditService.getTopListBefore(anchorId, count, limit).toResult()
         }.map { dto ->
             dto.mapToTopPostPaging()
         }

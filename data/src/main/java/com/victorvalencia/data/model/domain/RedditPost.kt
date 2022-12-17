@@ -5,6 +5,7 @@ data class RedditPost(
     val id: String,
     val title: String,
     val subreddit: String,
+    val author: String,
     val thumbnailUrl: String,
     val permalink: String,
     val url: String,

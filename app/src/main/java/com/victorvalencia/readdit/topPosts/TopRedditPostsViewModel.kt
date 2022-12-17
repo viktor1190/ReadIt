@@ -37,9 +37,9 @@ class TopRedditPostsViewModel @Inject constructor(
         // findNavController().navigate(R.id.action_FirstFragment_to_SecondFragment)
     }
 
-    override fun submitAdapterPageData(adapter: TopRedditPostsPagingAdapter, pagingData: PagingData<RedditPost>) {
+    override fun submitAdapterPageData(topRedditPostsPagingAdapter: TopRedditPostsPagingAdapter, pagingData: PagingData<RedditPost>) {
         viewModelScope.launch {
-            adapter.submitData(pagingData)
+            topRedditPostsPagingAdapter.submitData(pagingData)
         }
     }
 

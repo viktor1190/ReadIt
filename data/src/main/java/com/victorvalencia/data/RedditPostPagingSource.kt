@@ -5,9 +5,8 @@ import androidx.paging.PagingState
 import com.victorvalencia.data.model.ApiResult
 import com.victorvalencia.data.model.asNetworkFailureException
 import com.victorvalencia.data.model.domain.RedditPost
-import javax.inject.Inject
 
-class RedditPostPagingSource @Inject constructor(
+class RedditPostPagingSource(
     private val redditPostsRepository: RedditPostsRepository
 ) : PagingSource<String, RedditPost>() {
 
@@ -21,8 +20,15 @@ class RedditPostPagingSource @Inject constructor(
     }
 
     override suspend fun load(params: LoadParams<String>): LoadResult<String, RedditPost> {
-        return when (val result =
-            redditPostsRepository.getNextTopPosts(anchorId = params.key, count = lastCount, limit = params.loadSize)) {
+        val result = when (params) {
+            is LoadParams.Refresh -> redditPostsRepository
+                .getNextTopPosts(anchorId = null, count = 0, limit = params.loadSize)
+            is LoadParams.Append -> redditPostsRepository
+                .getNextTopPosts(anchorId = params.key, count = lastCount, limit = params.loadSize)
+            is LoadParams.Prepend -> redditPostsRepository
+                .getPrevTopPosts(anchorId = params.key, count = 0, limit = params.loadSize)
+        }
+        return when (result) {
             is ApiResult.Success -> {
                 lastCount = result.data.lastCount
                 LoadResult.Page(
