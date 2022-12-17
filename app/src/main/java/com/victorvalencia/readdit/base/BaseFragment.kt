@@ -16,7 +16,7 @@ abstract class BaseFragment<FRAGMENT_VIEW_MODEL : BaseViewModel, BINDING: ViewDa
 
     private var _binding: BINDING? = null
 
-    private val binding: BINDING
+    protected val binding: BINDING
         get() = _binding!!
 
     @LayoutRes

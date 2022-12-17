@@ -1,9 +1,9 @@
 package com.victorvalencia.data.network
 
-import com.victorvalencia.data.mapper.mapToRedditPosts
+import com.victorvalencia.data.mapper.mapToTopPostPaging
 import com.victorvalencia.data.model.ApiResult
 import com.victorvalencia.data.model.ResponseToApiResultMapper
-import com.victorvalencia.data.model.domain.RedditPost
+import com.victorvalencia.data.model.domain.TopPostPaging
 import com.victorvalencia.data.model.map
 import com.victorvalencia.data.model.wrapExceptions
 import retrofit2.Response
@@ -11,7 +11,7 @@ import javax.inject.Inject
 
 internal interface RedditApi {
 
-    suspend fun getTopList(): ApiResult<List<RedditPost>>
+    suspend fun getNextTopList(anchorId: String?, count: Int?, limit: Int?): ApiResult<TopPostPaging>
 }
 
 internal class RedditApiImpl @Inject constructor(
@@ -20,11 +20,11 @@ internal class RedditApiImpl @Inject constructor(
     private val networkHandler: NetworkHandler
 ): RedditApi {
 
-    override suspend fun getTopList(): ApiResult<List<RedditPost>> {
+    override suspend fun getNextTopList(anchorId: String?, count: Int?, limit: Int?): ApiResult<TopPostPaging> {
         return wrapExceptions("getTopList") {
-            redditService.getTopList().toResult()
+            redditService.getTopListAfter(anchorId, count, limit).toResult()
         }.map { dto ->
-            dto.mapToRedditPosts()
+            dto.mapToTopPostPaging()
         }
 
     }

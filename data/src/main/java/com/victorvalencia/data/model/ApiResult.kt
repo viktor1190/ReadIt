@@ -18,6 +18,8 @@ sealed class ApiResult<out SUCCESS_TYPE : Any> {
     }
 }
 
+class NetworkFailureException(message: String, override val cause: Throwable?): Exception(message, cause)
+
 /**
  * Executes the [transform] block only when receiver [ApiResult.Success] to modify the wrapped value, similar to Collection/List map function.
  *
@@ -36,6 +38,15 @@ fun <T : Any, R : Any> ApiResult<T>.map(transform: (T) -> ApiResult<R>): ApiResu
 
 /** Syntax sugar to wrap the receiver [T] into [ApiResult.Success] and support chaining */
 fun <T : Any> T.asSuccess(): ApiResult.Success<T> = ApiResult.Success(this)
+
+fun <T : ApiResult.Failure> T.asNetworkFailureException(): NetworkFailureException = when(this) {
+    is ApiResult.Failure.NetworkTimeoutFailure -> NetworkFailureException(
+        if (noConnection) "No internet connection" else "Timeout",
+        exception)
+    is ApiResult.Failure.Server -> NetworkFailureException(toString(), null)
+    is ApiResult.Failure.GeneralFailure -> NetworkFailureException(message, null)
+    else -> NetworkFailureException("Unknown network failure", null )
+}
 
 /** Resolves exceptions to an appropriate ApiResult.Failure subtype */
 fun Exception.asAppropriateFailure(): ApiResult.Failure {

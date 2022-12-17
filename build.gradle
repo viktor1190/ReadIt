@@ -40,4 +40,7 @@ ext {
     // https://github.com/square/retrofit/releases
     retrofitVersion = "2.9.0"
     moshiVersion = "1.13.0"
+
+    // Libraries
+    paging_version = "3.1.1"
 }

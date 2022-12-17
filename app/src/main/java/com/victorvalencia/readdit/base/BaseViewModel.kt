@@ -54,7 +54,7 @@ abstract class BaseViewModel: ViewModel() {
         }
     }
 
-    suspend fun showErrorDialogEvent(dialogContent: DialogContent) {
+    private suspend fun showErrorDialogEvent(dialogContent: DialogContent) {
         uiEventFlow.emitValue(BaseUiEvent.ShowErrorDialogEvent(dialogContent))
     }
 

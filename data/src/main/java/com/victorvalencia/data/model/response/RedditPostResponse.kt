@@ -14,6 +14,9 @@ internal data class RedditTopPostsResponse(
 @JsonClass(generateAdapter = true)
 @Parcelize
 internal data class RedditListDataResponse(
+    @Json(name = "after") val after: String?,
+    @Json(name = "before") val before: String?,
+    @Json(name = "dist") val dist: Int?,
     @Json(name = "children") val children: List<RedditChildrenItemsResponse>
 ): Parcelable
 
@@ -26,6 +29,8 @@ internal data class RedditChildrenItemsResponse(
 @JsonClass(generateAdapter = true)
 @Parcelize
 internal data class RedditTopItemResponse(
+    @Json(name = "id") val id: String,
+    @Json(name = "name") val name: String,
     @Json(name = "title") val title: String,
     @Json(name = "subreddit") val subreddit: String,
     @Json(name = "thumbnail") val thumbnailUrl: String,
