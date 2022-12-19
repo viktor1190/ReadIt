@@ -8,10 +8,10 @@ import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.lifecycleScope
 import androidx.lifecycle.repeatOnLifecycle
 import androidx.paging.LoadState
-import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.victorvalencia.readdit.R
 import com.victorvalencia.readdit.base.BaseFragment
+import com.victorvalencia.readdit.base.MarginItemDecorator
 import com.victorvalencia.readdit.databinding.FragmentTopRedditPostsBinding
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.launch
@@ -34,7 +34,11 @@ class TopRedditPostsFragment : BaseFragment<TopRedditPostsViewModel, FragmentTop
         binding.recyclerviewRedditPosts.apply {
             adapter = redditPostsAdapter
             layoutManager = LinearLayoutManager(context)
-            val decoration = DividerItemDecoration(context, DividerItemDecoration.VERTICAL)
+            val decoration = MarginItemDecorator(
+                marginStartInPixels = resources.getDimensionPixelSize(R.dimen.margin_all_medium),
+                marginEndInPixels = resources.getDimensionPixelSize(R.dimen.margin_all_medium),
+                spaceBetweenInPixels = 0
+            )
             addItemDecoration(decoration)
         }
         lifecycleScope.launch {

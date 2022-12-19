@@ -29,9 +29,6 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" >
 
-            <!-- TODO updateRedditPosts="@{viewModel.topRedditPosts}"
-            dataLoaderCallback="@{viewModel.submitAdapterPageData}"
-            lifeCycleOwner="@{parentLifeCycleOwner}"-->
             <androidx.recyclerview.widget.RecyclerView
                 android:id="@+id/recyclerview_redditPosts"
                 android:layout_width="match_parent"

@@ -17,21 +17,6 @@ import androidx.recyclerview.widget.RecyclerView
 import com.victorvalencia.data.model.domain.RedditPost
 import com.victorvalencia.readdit.BR
 
-/* TODO @BindingAdapter("updateRedditPosts", "dataLoaderCallback", "lifeCycleOwner", requireAll = true)
-fun RecyclerView.updateRedditPosts(
-    pagingData: PagingData<RedditPost>,
-    dataLoaderCallback: DataLoaderCallbackPageAdapter,
-    parentLifecycleOwner: LifecycleOwner
-) {
-    if (adapter == null) {
-        layoutManager = LinearLayoutManager(context)
-        adapter = TopRedditPostsPagingAdapter(parentLifecycleOwner, R.layout.item_top_reddit_post)
-        val decoration = DividerItemDecoration(context, DividerItemDecoration.VERTICAL)
-        addItemDecoration(decoration)
-    }
-    dataLoaderCallback.submitAdapterPageData(adapter as TopRedditPostsPagingAdapter, pagingData)
-}*/
-
 interface DataLoaderCallbackPageAdapter {
     fun submitAdapterPageData(topRedditPostsPagingAdapter: TopRedditPostsPagingAdapter, pagingData: PagingData<RedditPost>)
 }
