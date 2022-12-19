@@ -1,15 +1,12 @@
 package com.victorvalencia.data.di
 
-import androidx.paging.PagingSource
 import com.squareup.moshi.Moshi
-import com.victorvalencia.data.RedditPostPagingSource
 import com.victorvalencia.data.RedditPostsRepository
 import com.victorvalencia.data.RedditPostsRepositoryImpl
 import com.victorvalencia.data.TopPostsPagingSourceRepository
 import com.victorvalencia.data.TopPostsPagingSourceRepositoryImpl
-import com.victorvalencia.data.model.ResponseToApiResultMapper
-import com.victorvalencia.data.model.ResponseToApiResultMapperImpl
-import com.victorvalencia.data.model.domain.RedditPost
+import com.victorvalencia.data.mapper.ResponseToApiResultMapper
+import com.victorvalencia.data.mapper.ResponseToApiResultMapperImpl
 import com.victorvalencia.data.network.NetworkHandler
 import com.victorvalencia.data.network.NetworkHandlerImpl
 import com.victorvalencia.data.network.RedditApi

@@ -1,7 +1,8 @@
-package com.victorvalencia.data.model
+package com.victorvalencia.data.mapper
 
 import com.squareup.moshi.JsonDataException
-import com.squareup.moshi.Moshi
+import com.victorvalencia.data.model.ApiResult
+import com.victorvalencia.data.model.ServerError
 import retrofit2.Response
 import timber.log.Timber
 import java.net.HttpURLConnection

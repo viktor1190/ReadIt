@@ -2,7 +2,7 @@ package com.victorvalencia.data.network
 
 import com.victorvalencia.data.mapper.mapToTopPostPaging
 import com.victorvalencia.data.model.ApiResult
-import com.victorvalencia.data.model.ResponseToApiResultMapper
+import com.victorvalencia.data.mapper.ResponseToApiResultMapper
 import com.victorvalencia.data.model.domain.TopPostPaging
 import com.victorvalencia.data.model.map
 import com.victorvalencia.data.model.wrapExceptions

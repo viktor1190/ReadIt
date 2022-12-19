@@ -31,12 +31,6 @@ class TopRedditPostsViewModel @Inject constructor(
         redditPostsRepository.getTopPostsPagingSource()
     }.flow.cachedIn(viewModelScope)
 
-    fun navigateToSecondFragment() {
-        Timber.v("Navigating to the second fragment...")
-        // TODO
-        // findNavController().navigate(R.id.action_FirstFragment_to_SecondFragment)
-    }
-
     override fun submitAdapterPageData(topRedditPostsPagingAdapter: TopRedditPostsPagingAdapter, pagingData: PagingData<RedditPost>) {
         viewModelScope.launch {
             topRedditPostsPagingAdapter.submitData(pagingData)
