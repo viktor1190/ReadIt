@@ -1,0 +1,61 @@
+@startuml
+
+caption **Figure 3**: Brief description of the data module in a class diagram
+
+class TopPostsPagingSourceRepository {
+    getTopPostsPagingSource(): PagingSource<String, RedditPost>
+}
+class RedditPostsRepository {
+    getNextTopPosts(anchorId, count, limit): ApiResult<TopPostPaging>
+    getPrevTopPosts(anchorId, count, limit) ApiResult<TopPostPaging>
+}
+
+package network {
+    class RedditApi {
+        getNextTopList(anchorId, count, limit): ApiResult<TopPostPaging>
+        getPrevTopList(anchorId, count, limit): ApiResult<TopPostPaging>
+    }
+
+    class RedditService {
+        getTopListAfter(id, count, limit): Response<RedditTopPostsResponse>
+        getTopListBefore(id, count, limit): Response<RedditTopPostsResponse>
+    }
+}
+
+package model {
+    package domain {
+        class RedditPost
+        class TopPostPaging
+    }
+    package response {
+        class RedditTopPostsResponse
+    }
+    class ApiResult
+}
+
+TopPostPaging -down-> RedditPost
+
+package paging {
+    class RedditPostPagingSource {
+        getRefreshKey(state): String
+        load(params): LoadResult<String, RedditPost>
+    }
+}
+
+package mapper {
+    class ResponseToApiResultMapper
+    class RedditTopListResponseMapper
+}
+
+RedditApi -> ResponseToApiResultMapper
+RedditApi -> RedditTopListResponseMapper
+RedditApi --> TopPostPaging
+RedditApi -> ApiResult
+
+RedditService --o RedditTopPostsResponse
+RedditApi -down-> RedditService
+RedditPostsRepository -down-> RedditApi
+RedditPostPagingSource -> RedditPostsRepository
+TopPostsPagingSourceRepository -down-> RedditPostPagingSource
+
+@enduml

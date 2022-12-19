@@ -1,0 +1,23 @@
+@startuml
+
+caption **Figure 2**: Brief description of app module in class diagram
+
+class MainActivity
+
+package base {
+    abstract BaseFragment
+    abstract BaseViewModel
+}
+
+MainActivity -down-> BaseFragment
+BaseFragment -> BaseViewModel
+
+package topPosts{
+    class TopRedditPostFragment
+    class TopRedditPostsViewModel
+}
+
+TopRedditPostFragment -up-|> BaseFragment
+TopRedditPostsViewModel -up-|> BaseViewModel
+
+@enduml

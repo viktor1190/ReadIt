@@ -1,0 +1,44 @@
+@startuml
+
+caption **Figure 1**: App's architecture overview components diagram
+
+package app {
+    [Fragment]
+    [ViewModel]
+}
+
+Fragment -down-> ViewModel
+
+package data {
+    [PagingSourceRepository]
+    [RedditPostsRepository]
+    [RedditApi]
+    [RedditService]
+}
+
+cloud CloudServiceApi
+
+ViewModel -down-> PagingSourceRepository
+PagingSourceRepository -down-> RedditPostsRepository
+RedditPostsRepository -down-> RedditApi
+RedditApi -down-> RedditService
+RedditService -down->CloudServiceApi
+
+note right of PagingSourceRepository
+    Reuses RedditPostsRepository to provide
+    a paging version of the domain data
+end note
+
+note right of RedditApi
+    Local interface for 
+    networking data access
+end note
+
+note right of RedditService
+    Retrofit Interface
+end note
+
+note right of CloudServiceApi
+    Reddit's API
+end note
+@enduml
