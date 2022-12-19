@@ -9,6 +9,7 @@ import androidx.databinding.DataBindingUtil
 import androidx.databinding.ViewDataBinding
 import androidx.fragment.app.Fragment
 import com.victorvalencia.readdit.BR
+import com.victorvalencia.readdit.util.LoadingView
 
 abstract class BaseFragment<FRAGMENT_VIEW_MODEL : BaseViewModel, BINDING: ViewDataBinding> : Fragment() {
 

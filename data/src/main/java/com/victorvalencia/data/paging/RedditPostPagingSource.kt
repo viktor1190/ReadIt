@@ -1,7 +1,8 @@
-package com.victorvalencia.data
+package com.victorvalencia.data.paging
 
 import androidx.paging.PagingSource
 import androidx.paging.PagingState
+import com.victorvalencia.data.RedditPostsRepository
 import com.victorvalencia.data.model.ApiResult
 import com.victorvalencia.data.model.asNetworkFailureException
 import com.victorvalencia.data.model.domain.RedditPost

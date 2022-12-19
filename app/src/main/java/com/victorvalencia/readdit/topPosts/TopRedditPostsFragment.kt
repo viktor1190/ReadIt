@@ -11,7 +11,7 @@ import androidx.paging.LoadState
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.victorvalencia.readdit.R
 import com.victorvalencia.readdit.base.BaseFragment
-import com.victorvalencia.readdit.base.MarginItemDecorator
+import com.victorvalencia.readdit.util.MarginItemDecorator
 import com.victorvalencia.readdit.databinding.FragmentTopRedditPostsBinding
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.launch

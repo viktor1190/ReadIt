@@ -2,6 +2,7 @@ package com.victorvalencia.data
 
 import androidx.paging.PagingSource
 import com.victorvalencia.data.model.domain.RedditPost
+import com.victorvalencia.data.paging.RedditPostPagingSource
 import javax.inject.Inject
 
 interface TopPostsPagingSourceRepository {

@@ -5,6 +5,7 @@ import com.google.common.truth.Truth.assertThat
 import com.victorvalencia.data.model.ApiResult
 import com.victorvalencia.data.model.domain.RedditPost
 import com.victorvalencia.data.model.domain.TopPostPaging
+import com.victorvalencia.data.paging.RedditPostPagingSource
 import kotlinx.coroutines.test.runTest
 import org.junit.Test
 import org.mockito.kotlin.doReturn

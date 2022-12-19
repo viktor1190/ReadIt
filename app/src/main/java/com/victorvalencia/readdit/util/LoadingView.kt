@@ -1,4 +1,4 @@
-package com.victorvalencia.readdit.base
+package com.victorvalencia.readdit.util
 
 import android.content.Context
 import android.util.AttributeSet
